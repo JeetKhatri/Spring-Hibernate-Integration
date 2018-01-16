@@ -10,6 +10,6 @@ import com.jeetkhatri.model.*;
  */
 public interface UserService {
 	
-	public boolean loginUser(String email, String password);
+	public List<Users> loginUser(String email, String password);
 }
 

@@ -7,6 +7,6 @@ import com.jeetkhatri.model.Users;
 
 public interface UserDAO {
 	
-	public boolean loginUser(String email, String password);
+	public List<Users> loginUser(String email, String password);
 }
 
