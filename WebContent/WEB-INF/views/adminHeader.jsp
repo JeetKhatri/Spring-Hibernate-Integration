@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file="userHeader.jsp"%>
-    
-    <h2>User Home page </h2>
+<a href="addBookPage.html">Add book</a>&emsp;&emsp;
+<a href="listBookPage.html">List Books</a>&emsp;&emsp;
+<a href="searchBookPage.html">search Books</a>&emsp;&emsp;
+<hr>
 </body>
 </html>

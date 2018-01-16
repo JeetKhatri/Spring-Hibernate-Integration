@@ -39,6 +39,7 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 			<list>
 				<value>com.jeetkhatri.model.Employee</value>
 				<value>com.jeetkhatri.model.Users</value>
+				<value>com.jeetkhatri.model.Books</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

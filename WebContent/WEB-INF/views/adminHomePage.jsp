@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,9 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>Admin Home Page</h2>
-    <h2>1. <a href="employees.html">Add book</a></h2>
-    <h2>2. <a href="add.html">List Books</a></h2>
-    <h2>3. <a href="add.html">search Books</a></h2>
+	<%@include file="adminHeader.jsp"%>
+
+	<h2 align="center">Admin Home page</h2>
+	<br>
+	<br>
+	<br>
+	<br>
+	<%
+		String msg = (String) request.getAttribute("msg");
+		if (msg != null) {
+			out.println(msg);
+		}
+	%>
 </body>
 </html>

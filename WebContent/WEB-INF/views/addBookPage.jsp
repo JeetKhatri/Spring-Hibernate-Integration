@@ -7,18 +7,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<h2>Login page</h2>
-		<form method="POST" action="/SpringHibernateIntegration/login.html">
+<%@include file="adminHeader.jsp"%>
+<br/>
+	<h2>Add Book</h2>
+		<form method="POST" action="/SpringHibernateIntegration/addBook.html">
 	   		<table>
 			    <tr>
-			        <td>Email</td>
-			        <td><input type="text" name="email" /></td>
+			        <td>Book name : </td>
+			        <td><input type="text" name="name" /></td>
 			    </tr>
 			    <tr>
-			        <td>Password</td>
-			        <td><input type="password" name="password" /></td>
+			        <td>Book author :</td>
+			        <td><input type="text" name="author" /></td>
 			    </tr>
-			   
+			    <tr>
+			        <td>Book price :</td>
+			        <td><input type="number" name="price" /></td>
+			    </tr>
 			    <tr>
 			      <td colspan="2"><input type="submit" value="Submit"/></td>
 		      </tr>
