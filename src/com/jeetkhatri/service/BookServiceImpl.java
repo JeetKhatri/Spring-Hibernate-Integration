@@ -22,5 +22,13 @@ public class BookServiceImpl implements BookService{
 		bookDAO.addBook(book);
 	}
 	
+	public List<Books> listOfBooks() {
+		return bookDAO.listOfBooks();
+	}
+
+	@Override
+	public List<Books> searchBookByName(String name) {
+		return bookDAO.searchBookByName(name);
+	}
 
 }
