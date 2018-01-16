@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="employees.html">search book</a>&emsp;&emsp;
+<a href="homeUser.html">Home</a>&emsp;&emsp;
+<a href="searchBookPage.html">search book</a>&emsp;&emsp;
 <a href="add.html">view books</a>&emsp;&emsp;
+<hr>
 </body>
 </html>

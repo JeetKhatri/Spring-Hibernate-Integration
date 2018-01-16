@@ -1,3 +1,4 @@
+<%@page import="com.jeetkhatri.model.Users"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -8,7 +9,18 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+		Users user = (Users) session.getAttribute("user");
+		if (user.getIsAdmin().equalsIgnoreCase("Y")) {
+	%>
 	<%@include file="adminHeader.jsp"%>
+	<%
+		} else {
+	%>
+	<%@include file="userHeader.jsp"%>
+	<%
+		}
+	%>
 	<br />
 	<h2>search Book</h2>
 	<form method="POST"
@@ -23,7 +35,8 @@
 			</tr>
 		</table>
 	</form>
-	<br><br>
+	<br>
+	<br>
 	<c:if test="${!empty books}">
 		<h3>Book List</h3>
 		<table align="left" border="1">

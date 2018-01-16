@@ -6,6 +6,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +36,8 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private HttpServletRequest request;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView loginUsers(@ModelAttribute("command") Users user,
@@ -42,10 +47,13 @@ public class UserController {
 				user.getPassword());
 		if (users.size() == 0)
 			return new ModelAndView("loginPage");
-		else if (users.get(0).getIsAdmin().equalsIgnoreCase("Y"))
+		else if (users.get(0).getIsAdmin().equalsIgnoreCase("Y")){
+			request.getSession().setAttribute("user",users.get(0));
 			return new ModelAndView("adminHomePage");
-		else
+		}else{
+			request.getSession().setAttribute("user",users.get(0));
 			return new ModelAndView("userHomePage");
+		}
 	}
 
 	@RequestMapping(value = "/loginPage", method = RequestMethod.GET)
@@ -53,7 +61,25 @@ public class UserController {
 			@ModelAttribute("command") UserBean userBean, BindingResult result) {
 		return new ModelAndView("loginPage");
 	}
+	
+	@RequestMapping(value = "/homeAdmin", method = RequestMethod.GET)
+	public ModelAndView homeAdmin(
+			@ModelAttribute("command") UserBean userBean, BindingResult result) {
+		return new ModelAndView("adminHomePage");
+	}
+	
+	@RequestMapping(value = "/homeUser", method = RequestMethod.GET)
+	public ModelAndView homeUser(
+			@ModelAttribute("command") UserBean userBean, BindingResult result) {
+		return new ModelAndView("userHomePage");
+	}
 
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView logout(
+			@ModelAttribute("command") UserBean userBean, BindingResult result) {
+		request.getSession().invalidate();
+		return new ModelAndView("loginPage");
+	}
 	private Users prepareModel(UserBean userBean) {
 		Users user = new Users();
 		user.setEmail(userBean.getEmail());
