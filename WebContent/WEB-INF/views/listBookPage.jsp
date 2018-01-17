@@ -20,6 +20,7 @@
 				<th>Book price</th>
 				<th>Edit</th>
 				<th>Delete</th>
+				<th>View</th>
 			</tr>
 
 			<c:forEach items="${books}" var="book">
@@ -30,6 +31,7 @@
 					<td><c:out value="${book.price}" /></td>
 					<td><a href="editBookPage.html?id=${book.id}">Edit</a></td>
 					<td><a href="deleteBook.html?id=${book.id}">Delete</a></td>
+					<td><a href="viewBook.html?id=${book.id}">View</a></td>
 				</tr>
 			</c:forEach>
 		</table>

@@ -1,5 +1,6 @@
 package com.jeetkhatri.controller;
 
+import java.awt.Desktop;
 import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.fileupload.FileUpload;
 import org.apache.commons.io.IOUtils;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,17 +54,21 @@ public class BookController {
 	private BookService bookService;
 	@Autowired
 	private HttpServletRequest request;
-
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	
 	@RequestMapping(value = "/addBook", method = RequestMethod.POST)
 	public ModelAndView addBook(@ModelAttribute("command") BookBean bookBean,
 			@ModelAttribute("multiFileUpload") MultiFileUpload multiFileUpload,
 			BindingResult bindingResult, Model model) throws IOException {
 
 		bookBean.setId(GenrateMathodsUtils.getRandomString(15));
-		String absoluteDiskPath = request.getSession().getServletContext().getRealPath("files");
+		String absoluteDiskPath = request.getSession().getServletContext()
+				.getRealPath("files");
 
 		List<MultipartFile> files = multiFileUpload.getMultiUploadedFileList();
-		
+
 		for (MultipartFile multipartFile : files) {
 
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -106,7 +112,9 @@ public class BookController {
 	public ModelAndView searchBook(@ModelAttribute("command") Books book,
 			BindingResult result) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("books", (bookService.searchBookByName(book.getName())));
+		List list = bookService.searchBookByName(book.getName());
+		if(list.size() ==0 )  request.setAttribute("msg", "No book found");
+		model.put("books", list);
 		return new ModelAndView("searchBookPage", model);
 	}
 
@@ -138,6 +146,65 @@ public class BookController {
 		return new ModelAndView("redirect:/listBookPage.html");
 	}
 
+	@RequestMapping(value = "/viewBook", method = RequestMethod.GET)
+	public ModelAndView viewBook(@ModelAttribute("command") BookBean bookBean,
+			BindingResult result) throws IOException, InterruptedException {
+
+		String absoluteDiskPath = request.getSession().getServletContext()
+				.getRealPath("files")
+				+ File.separator;
+
+		try {
+
+			File pdfFile = new File(absoluteDiskPath+bookBean.getId()+".pdf");
+			if (pdfFile.exists()) {
+
+				if (Desktop.isDesktopSupported()) {
+					Desktop.getDesktop().open(pdfFile);
+				} else {
+					System.out.println("Awt Desktop is not supported!");
+				}
+
+			} else {
+				System.out.println(absoluteDiskPath+File.separator+bookBean.getId());
+				System.out.println("File is not exists!");
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return new ModelAndView("redirect:/listBookPage.html");
+	}
+	
+	@RequestMapping(value = "/viewBookBySearch", method = RequestMethod.GET)
+	public ModelAndView viewBookBySearch(@ModelAttribute("command") BookBean bookBean,
+			BindingResult result) throws IOException, InterruptedException {
+
+		String absoluteDiskPath = request.getSession().getServletContext()
+				.getRealPath("files")
+				+ File.separator;
+
+		try {
+
+			File pdfFile = new File(absoluteDiskPath+bookBean.getId()+".pdf");
+			if (pdfFile.exists()) {
+
+				if (Desktop.isDesktopSupported()) {
+					Desktop.getDesktop().open(pdfFile);
+				} else {
+					System.out.println("Awt Desktop is not supported!");
+				}
+
+			} else {
+				System.out.println(absoluteDiskPath+File.separator+bookBean.getId());
+				System.out.println("File is not exists!");
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return new ModelAndView("redirect:/searchBookPage.html");
+	}
 	@RequestMapping(value = "/editBookPage", method = RequestMethod.GET)
 	public ModelAndView editBookPage(
 			@ModelAttribute("command") BookBean bookBean, BindingResult result) {

@@ -37,6 +37,10 @@
 	</form>
 	<br>
 	<br>
+	<%String msg = (String)request.getAttribute("msg");
+	if(msg == null) msg="";
+	%>
+	<%=msg %>
 	<c:if test="${!empty books}">
 		<h3>Book List</h3>
 		<table align="left" border="1">
@@ -45,6 +49,7 @@
 				<th>Book Name</th>
 				<th>Book author</th>
 				<th>Book price</th>
+				<th>View</th>
 			</tr>
 			<c:forEach items="${books}" var="book">
 				<tr>
@@ -52,6 +57,7 @@
 					<td><c:out value="${book.name}" /></td>
 					<td><c:out value="${book.author}" /></td>
 					<td><c:out value="${book.price}" /></td>
+					<td><a href="viewBookBySearch.html?id=${book.id}">View</a></td>
 				</tr>
 			</c:forEach>
 		</table>
