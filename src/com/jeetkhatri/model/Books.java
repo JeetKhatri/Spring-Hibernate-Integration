@@ -1,5 +1,6 @@
 package com.jeetkhatri.model;
 
+import java.io.File;
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -31,7 +32,7 @@ public class Books implements Serializable {
 
 	@Column(name = "price")
 	private String price;
-
+	
 	public String getId() {
 		return id;
 	}

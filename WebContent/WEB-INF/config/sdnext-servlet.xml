@@ -15,6 +15,11 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	<context:property-placeholder location="classpath:resources/database.properties" />
 	<context:component-scan base-package="com.jeetkhatri" />
 
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="7000000" />
+	</bean>
+
 	<tx:annotation-driven transaction-manager="hibernateTransactionManager" />
 	<mvc:interceptors>
 		<bean class="com.jeetkhatri.interceptor.sessionCheckInterceptor" />

@@ -1,5 +1,7 @@
 package com.jeetkhatri.bean;
 
+import java.io.File;
+
 public class BookBean {
 	private String id, name, author, price;
 

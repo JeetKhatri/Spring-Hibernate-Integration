@@ -22,7 +22,6 @@ public class BookDAOImpl implements BookDAO {
 
 	@Override
 	public void addBook(Books book) {
-		book.setId(GenrateMathodsUtils.getRandomString(15));
 		sessionFactory.getCurrentSession().saveOrUpdate(book);
 	}
 
