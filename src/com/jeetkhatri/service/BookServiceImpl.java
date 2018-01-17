@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jeetkhatri.bean.BookBean;
 import com.jeetkhatri.dao.*;
 import com.jeetkhatri.model.*;
 
@@ -29,6 +30,21 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public List<Books> searchBookByName(String name) {
 		return bookDAO.searchBookByName(name);
+	}
+
+	@Override
+	public void deleteBook(Books book) {
+		bookDAO.deleteBook(book);
+	}
+
+	@Override
+	public Books getBookDetails(String id) {
+		return bookDAO.getBookDetails(id);
+	}
+
+	@Override
+	public void editBook(Books book) {
+		bookDAO.editBook(book);
 	}
 
 }

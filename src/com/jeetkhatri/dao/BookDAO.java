@@ -12,4 +12,10 @@ public interface BookDAO {
 
 	public List<Books> searchBookByName(String name);
 
+	public void deleteBook(Books book);
+
+	public Books getBookDetails(String id);
+
+	public void editBook(Books book);
+
 }

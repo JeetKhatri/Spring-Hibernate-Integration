@@ -28,12 +28,31 @@ public class BookDAOImpl implements BookDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Books> listOfBooks() {
-		return (List<Books>) sessionFactory.getCurrentSession().createCriteria(Books.class).list();
+		return (List<Books>) sessionFactory.getCurrentSession()
+				.createCriteria(Books.class).list();
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Books> searchBookByName(String name) {
-		return (List<Books>) sessionFactory.getCurrentSession().createCriteria(Books.class).add(Restrictions.eq("name", name)).list();
+		return (List<Books>) sessionFactory.getCurrentSession()
+				.createCriteria(Books.class).add(Restrictions.eq("name", name))
+				.list();
+	}
+
+	@Override
+	public void deleteBook(Books book) {
+		Books b = (Books) sessionFactory.getCurrentSession().createCriteria(Books.class)
+				.add(Restrictions.eq("id",book.getId())).uniqueResult();
+		sessionFactory.getCurrentSession().delete(b);
+	}
+
+	@Override
+	public Books getBookDetails(String id) {
+		return (Books) sessionFactory.getCurrentSession().get(Books.class, id);
+	}
+
+	@Override
+	public void editBook(Books book) {
+		sessionFactory.getCurrentSession().update(book);
 	}
 }
-
