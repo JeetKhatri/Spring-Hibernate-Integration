@@ -19,7 +19,7 @@ public class UserDAOImpl implements UserDAO {
 	private SessionFactory sessionFactory;
 
 	public List<Users> loginUser(String email, String password) {
-		
+		System.out.println(password);
 		return sessionFactory.getCurrentSession().createCriteria(Users.class)
 				.add(Restrictions.eq("email", email))
 				.add(Restrictions.eq("password", password))

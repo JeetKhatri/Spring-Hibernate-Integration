@@ -39,8 +39,11 @@ public class sessionCheckInterceptor implements HandlerInterceptor {
 	}
 
 	@Override
-	public void afterCompletion(HttpServletRequest request,
-			HttpServletResponse response, Object handler, Exception ex)
+	public void afterCompletion(HttpServletRequest arg0,
+			HttpServletResponse arg1, Object arg2, Exception arg3)
 			throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
+
 }
