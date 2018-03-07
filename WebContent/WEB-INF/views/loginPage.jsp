@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+		<%@include file="header.jsp"%>
 		<h2>Login page</h2>
 		<form method="POST" action="/SpringHibernateIntegration/login.html">
 	   		<table>

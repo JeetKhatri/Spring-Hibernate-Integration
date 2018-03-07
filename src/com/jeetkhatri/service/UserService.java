@@ -11,5 +11,7 @@ import com.jeetkhatri.model.*;
 public interface UserService {
 	
 	public List<Users> loginUser(String email, String password);
+
+	public void addUser(Users users);
 }
 

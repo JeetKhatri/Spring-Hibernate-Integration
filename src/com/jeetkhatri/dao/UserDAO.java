@@ -8,5 +8,7 @@ import com.jeetkhatri.model.Users;
 public interface UserDAO {
 	
 	public List<Users> loginUser(String email, String password);
+
+	public void addUser(Users users);
 }
 

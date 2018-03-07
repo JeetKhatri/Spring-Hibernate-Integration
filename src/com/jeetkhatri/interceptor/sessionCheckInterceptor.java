@@ -27,7 +27,8 @@ public class sessionCheckInterceptor implements HandlerInterceptor {
 
 		if (name.equalsIgnoreCase("index.html")
 				|| name.equalsIgnoreCase("loginPage.html")
-				|| name.equalsIgnoreCase("SpringHibernateIntegration")) {
+				|| name.equalsIgnoreCase("SpringHibernateIntegration")
+				|| name.equalsIgnoreCase("addUserPage.html")) {
 
 		} else {
 			Users user = (Users) request.getSession().getAttribute("user");
@@ -43,7 +44,7 @@ public class sessionCheckInterceptor implements HandlerInterceptor {
 			HttpServletResponse arg1, Object arg2, Exception arg3)
 			throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

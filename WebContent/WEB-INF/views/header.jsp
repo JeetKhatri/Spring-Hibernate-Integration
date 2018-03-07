@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Spring+Hibernate</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<%@include file="header.jsp"%>
-	<br><br><br><br><br><br><br>
-	<h1 align="center">Welcome</h1>
+	<a href="index.html">Home</a>&emsp;&emsp;
+    <a href="loginPage.html">Login page</a>&emsp;&emsp;
+	<a href="addUserPage.html">Add User</a>&emsp;&emsp;
+	<hr>
 </body>
 </html>

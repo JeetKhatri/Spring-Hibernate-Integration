@@ -55,8 +55,26 @@ public class UserController {
 		}
 	}
 
+	@RequestMapping(value = "/addUserPage", method = RequestMethod.GET)
+	public ModelAndView addUserPage(
+			@ModelAttribute("command") UserBean userBean, BindingResult result) {
+		System.out.println("ok1");
+		return new ModelAndView("addUserPage");
+	}
+
+	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
+	public ModelAndView saveEmployee(@ModelAttribute("command") UserBean userBean, 
+			BindingResult result) {
+		System.out.println("ok2");
+		Users users = prepareModel(userBean);
+		users.setIsAdmin("N");
+		users.setIsAvailable("Y");
+		userService.addUser(users);
+		return new ModelAndView("index.html");
+	}
+	
 	@RequestMapping(value = "/loginPage", method = RequestMethod.GET)
-	public ModelAndView addEmployee(
+	public ModelAndView loginPage(
 			@ModelAttribute("command") UserBean userBean, BindingResult result) {
 		return new ModelAndView("loginPage");
 	}

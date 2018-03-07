@@ -22,4 +22,9 @@ public class UserServiceImpl implements UserService{
 		return userDAO.loginUser(email, password);
 	}
 
+	@Override
+	public void addUser(Users users) {
+		userDAO.addUser(users);
+	}
+
 }

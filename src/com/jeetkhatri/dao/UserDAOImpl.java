@@ -25,4 +25,9 @@ public class UserDAOImpl implements UserDAO {
 				.add(Restrictions.eq("password", password))
 				.add(Restrictions.eq("isAvailable", "Y")).list(); 
 	}
+
+	@Override
+	public void addUser(Users users) {
+		sessionFactory.getCurrentSession().saveOrUpdate(users);
+	}
 }
