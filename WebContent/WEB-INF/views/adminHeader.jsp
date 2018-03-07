@@ -8,6 +8,7 @@
 </head>
 <body>
 <a href="homeAdmin.html">Home</a>&emsp;&emsp;
+<a href="addUserPage.html">Add User</a>&emsp;&emsp;
 <a href="addBookPage.html">Add book</a>&emsp;&emsp;
 <a href="listBookPage.html">List Books</a>&emsp;&emsp;
 <a href="searchBookPage.html">search Books</a>&emsp;&emsp;
