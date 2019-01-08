@@ -1,0 +1,6 @@
+create DB name library_management_system
+use library_management_system;
+create table users(id int (3) auto_increment primary key, name varchar(50), email varchar(20) unique,password varchar(20), isAdmin varchar(1), isAvailable varchar(1));
+insert into users(name,email,password,isAdmin,isAvailable) values("jeet","jeet.g.khatri@gmail.com","jeet","Y","Y");
+create folder name "files" at below specified location : 
+C:\Users\admin\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Spring-Hibernate-Integration-master
